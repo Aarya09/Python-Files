@@ -1,11 +1,11 @@
-## Projectile motion using vpython ##
+## Written by Scott Pflaumer ##
 
 from __future__ import division
 from vpython import *
 
 
 m = 5           ## see the effect of making the box more/less massive
-vi = 9         ##magnitude of initial velocity
+vi = 10         ##magnitude of initial velocity
 
 g = -9.8         #gravitational frield strength
 
@@ -28,14 +28,12 @@ zaxis = cylinder(pos=vec(0,0,0), axis=vec(0,0,2*L), radius=.1)
 
 ramp = box(pos= vec(0, sin(theta*2*pi/360)*L/2, 0), length = L, width = W, height = H, axis= vec(cos(theta*2*pi/360), sin(theta*2*pi/360), 0), color=color.white)
 rampbase = box(pos= vec(0, 0, 0), length = L*cos(theta*2*pi/360), width = W, height = H, color=color.white)
-rampside = box(pos= vec((L*cos(theta*2*pi/360)/2), sin(theta*2*pi/360)*L/2-.00*L, 0), length = H/5, width = W, height = sin(theta*2*pi/360)*L, color=color.white)
-
-box = box(pos= vec(0, (L*sin(theta*2*pi/360)*L*cos(theta*2*pi/360)*.5/(L*cos(theta*2*pi/360))+ h/2 + H/2), 0), length = l, width =w, height = h, axis = ramp.axis, color=color.blue)   #creates the box and it's physical attributes
-##end of no edit zone
-
+rampside = box(pos= vec((L*cos(theta*2*pi/360)/2), sin(theta*2*pi/360)*L/2-.00*L, 0), length = H/5, width = W, height = sin(theta*2*pi/360)*L, color=color.white))
+box=box(pos= vec(0, (L*sin(theta*2*pi/360)*L*cos(theta*2*pi/360)*.5/(L*cos(theta*2*pi/360))+ h/2 + H/2), 0), length = l, width =w, height = h, axis = ramp.axis, color=color.blue)   #creates the box and it's physical attributes
+##end of no edit zone 
 box.velocity = vector (vi*cos(theta*2*pi/360), vi*sin(theta*2*pi/360), 3) #calculates the initial box velocity in 3D with a vector in the form (x, y, z)
 
-a = vector(sin(theta*2*pi/360)*cos(theta*2*pi/360)*20, sin(theta*2*pi/360)*sin(theta*2*pi/360)*20, 0)#calculates the initial box acceleration
+a = vector(sin(theta*2*pi/360)*cos(theta*2*pi/360)*g, sin(theta*2*pi/360)*sin(theta*2*pi/360)*g, 0)#calculates the initial box acceleration
 
 
 varrow = arrow(pos=box.pos, axis=vscale*box.velocity, color=color.green)
